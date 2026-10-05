@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>GATE 2027 study planner</title>
+<meta name="theme-color" content="#3347C2">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="GATE Planner">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ctext y=%27.9em%27 font-size=%2790%27%3E%F0%9F%93%9A%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F2F4F7;--surface:#fff;--ink:#16202E;--muted:#5B6778;--line:#DDE2EA;--cs:#3347C2;--da:#0B8A78;--b:#16202E;--on:#fff;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#11161F;--surface:#1A212D;--ink:#E8ECF3;--muted:#95A1B3;--line:#2B3443;--cs:#8A98F2;--da:#4FD1BC;--b:#E8ECF3;--on:#11161F}}
+:root[data-theme="dark"]{--bg:#11161F;--surface:#1A212D;--ink:#E8ECF3;--muted:#95A1B3;--line:#2B3443;--cs:#8A98F2;--da:#4FD1BC;--b:#E8ECF3;--on:#11161F}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 15px/1.45 "Instrument Sans",system-ui,sans-serif}
+main{max-width:640px;margin:0 auto;padding:20px 16px 40px}
+h1{font:700 26px/1.1 "Bricolage Grotesque",system-ui,sans-serif;margin:0 0 14px}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px}
+.card.cs{--ac:var(--cs)}.card.da{--ac:var(--da)}
+.sh{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px}
+.sh b{font:700 20px "Bricolage Grotesque",system-ui,sans-serif;color:var(--ac)}
+.sh span{font-size:13px;color:var(--muted)}
+.bar{height:8px;background:var(--line);border-radius:4px;overflow:hidden;margin-bottom:5px}
+.bar.thin{height:4px}
+.bar i{display:block;height:100%;background:var(--ac);border-radius:4px;transition:width .25s}
+.bar.thin i{opacity:.55}
+.card p{margin:4px 0 0;font-size:12.5px;color:var(--muted)}
+.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:2;display:flex;gap:6px;padding:8px 0;background:var(--bg);overflow-x:auto}
+.tabs button{flex:none;font:500 14px inherit;font-family:inherit;padding:7px 14px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.tabs button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+details{background:var(--surface);border:1px solid var(--line);border-radius:12px;margin-top:8px;overflow:hidden}
+details.c{--ac:var(--cs)}details.d{--ac:var(--da)}details.b{--ac:var(--b)}
+summary{list-style:none;display:flex;align-items:center;gap:8px;padding:12px;cursor:pointer;min-height:48px}
+summary::-webkit-details-marker{display:none}
+summary::before{content:"";width:8px;height:8px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:rotate(-45deg);transition:transform .15s;flex:none;margin:0 4px 0 2px}
+details[open] summary::before{transform:rotate(45deg)}
+.nm{font-weight:600;flex:1}
+.tag{font-size:11.5px;font-weight:600;padding:2px 7px;border-radius:6px;border:1px solid var(--ac);color:var(--ac)}
+.ct{font-size:13px;color:var(--muted);min-width:34px;text-align:right}
+ul{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+li{display:flex;align-items:center;gap:6px;padding:9px 12px;border-bottom:1px solid var(--line)}
+li:last-child{border-bottom:0}
+li span{flex:1;font-size:14.5px}
+.chk{font:500 12.5px inherit;font-family:inherit;padding:6px 10px;border-radius:8px;border:1px solid var(--line);background:transparent;color:var(--muted);cursor:pointer;min-height:34px}
+.chk[aria-pressed="true"]{background:var(--ac);border-color:var(--ac);color:var(--on)}
+button:focus-visible,summary:focus-visible{outline:2px solid var(--ac,var(--ink));outline-offset:2px}
+#sync{margin-top:18px;font-size:12.5px;color:var(--muted);text-align:center}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+li.c{--ac:var(--cs)}li.d{--ac:var(--da)}li.b{--ac:var(--b)}
+li span small{display:block;font-size:11.5px;color:var(--muted)}
+</style>
+</head>
+<body>
+<main>
+<h1>GATE 2027 study planner</h1>
+<div class="stats"><div class="card cs" id="cs"></div><div class="card da" id="da"></div></div>
+<div class="tabs" id="tabs">
+<button data-f="all" aria-pressed="true">All topics</button>
+<button data-f="cs" aria-pressed="false">CS</button>
+<button data-f="da" aria-pressed="false">DA</button>
+<button data-f="both" aria-pressed="false">In both</button>
+</div>
+<div id="list"></div>
+<p id="sync">Progress saves on this device. Clearing browser data erases it.</p>
+</main>
+<script>
+// Prefix: c = GATE CS only, d = GATE DA only, b = both papers. Based on the official GATE syllabi; verify against gate2027.iitm.ac.in.
+const D=[
+["Probability & statistics",[
+"b:Counting: permutations & combinations","b:Probability axioms, sample space & events","b:Independent & mutually exclusive events","b:Marginal, conditional & joint probability","b:Bayes' theorem","d:Conditional expectation & variance","b:Mean, median, mode & standard deviation","d:Correlation & covariance","b:Random variables","b:Discrete random variables & PMF","b:Uniform distribution","b:Bernoulli & binomial distributions","b:Poisson distribution","b:Continuous random variables, PDF & CDF","b:Exponential distribution","b:Normal & standard normal distribution","d:t-distribution","d:Chi-squared distribution","d:Conditional PDF","d:Central limit theorem","d:Confidence intervals","d:z-test, t-test & chi-squared test"]],
+["Linear algebra",[
+"d:Vector spaces & subspaces","d:Linear dependence & independence","b:Matrices & their properties","d:Projection, orthogonal & idempotent matrices","d:Partitioned matrices","d:Quadratic forms","b:Determinants","b:Systems of linear equations & Gaussian elimination","d:Rank & nullity","b:Eigenvalues & eigenvectors","b:LU decomposition","d:Singular value decomposition (SVD)","d:Projections"]],
+["Calculus & optimization",[
+"b:Functions of a single variable","b:Limits & continuity","b:Differentiability","c:Mean value theorem","d:Taylor series","b:Maxima & minima","c:Integration","d:Optimization of a single variable"]],
+["Discrete mathematics",[
+"c:Propositional logic","c:First-order logic","c:Sets, relations & functions","c:Partial orders & lattices","c:Monoids & groups","c:Graphs: connectivity","c:Graphs: matching","c:Graphs: coloring","c:Counting & combinatorics","c:Recurrence relations","c:Generating functions"]],
+["Programming & data structures",[
+"d:Python: syntax, data types & control structures","c:Programming in C","c:Recursion","c:Arrays","b:Stacks","b:Queues","b:Linked lists","b:Trees","c:Binary search trees","c:Binary heaps","b:Hash tables","b:Graphs: basics & representations"]],
+["Algorithms",[
+"b:Asymptotic time & space complexity","b:Linear search & binary search","b:Selection, bubble & insertion sort","b:Merge sort & quicksort","b:Graph traversals: BFS & DFS","c:Hashing","c:Divide & conquer","c:Greedy algorithms","c:Dynamic programming","c:Minimum spanning trees","c:Shortest paths"]],
+["Databases & data warehousing",[
+"b:ER model","b:Relational model","b:Relational algebra","b:Tuple calculus","b:SQL","b:Integrity constraints","b:Normal forms","b:File organization & indexing","c:B and B+ trees","c:Transactions","c:Concurrency control","d:Data types","d:Data transformation: normalization, discretization, sampling, compression","d:Data warehouse schemas for multidimensional models","d:Concept hierarchies","d:Measures: categorization & computation"]],
+["Machine learning",[
+"d:Regression vs classification problems","d:Simple & multiple linear regression","d:Ridge regression","d:Logistic regression","d:k-nearest neighbors","d:Naive Bayes classifier","d:Linear discriminant analysis","d:Support vector machines","d:Decision trees","d:Bias-variance trade-off","d:Cross-validation: leave-one-out & k-fold","d:Multi-layer perceptron","d:Feed-forward neural networks","d:Clustering: k-means & k-medoids","d:Hierarchical clustering: single & multiple linkage","d:Dimensionality reduction","d:Principal component analysis (PCA)"]],
+["Artificial intelligence",[
+"d:Uninformed search","d:Informed search","d:Adversarial search","d:Propositional logic","d:Predicate logic","d:Reasoning under uncertainty: conditional independence","d:Exact inference: variable elimination","d:Approximate inference: sampling"]],
+["Digital logic",[
+"c:Boolean algebra","c:Combinational circuits","c:Sequential circuits","c:Minimization","c:Number representations","c:Computer arithmetic: fixed & floating point"]],
+["Computer organization & architecture",[
+"c:Machine instructions & addressing modes","c:ALU & data path","c:Control unit","c:Instruction pipelining","c:Pipeline hazards","c:Cache memory","c:Main & secondary memory","c:I/O interface: interrupts & DMA"]],
+["Theory of computation",[
+"c:Regular expressions & finite automata","c:Context-free grammars & push-down automata","c:Regular & context-free languages","c:Pumping lemma","c:Turing machines","c:Undecidability"]],
+["Compiler design",[
+"c:Lexical analysis","c:Parsing","c:Syntax-directed translation","c:Runtime environments","c:Intermediate code generation","c:Local optimization","c:Data flow analysis: constant propagation, liveness, CSE"]],
+["Operating systems",[
+"c:System calls","c:Processes & threads","c:Inter-process communication","c:Concurrency & synchronization","c:Deadlock","c:CPU scheduling","c:I/O scheduling","c:Memory management","c:Virtual memory","c:File systems"]],
+["Computer networks",[
+"c:Layering: OSI & TCP/IP","c:Circuit & packet switching","c:Data link: framing & error detection","c:Medium access control","c:Ethernet bridging","c:Routing: shortest path & flooding","c:Distance vector & link state routing","c:IPv4, CIDR & fragmentation","c:ARP, DHCP, ICMP & NAT","c:Transport: flow & congestion control","c:UDP, TCP & sockets","c:Application layer: DNS, SMTP, HTTP, FTP, email"]],
+["General aptitude",[
+"b:Verbal: grammar (tenses, articles, prepositions, conjunctions)","b:Verbal: vocabulary, idioms & phrases","b:Verbal: reading comprehension","b:Verbal: narrative sequencing","b:Quantitative: data interpretation","b:Quantitative: ratios, percentages, powers & logarithms","b:Quantitative: permutations, combinations & series","b:Quantitative: mensuration & geometry","b:Quantitative: elementary statistics & probability","b:Analytical: deduction, induction & analogy","b:Analytical: numerical relations & reasoning","b:Spatial: transformation of shapes","b:Spatial: paper folding, cutting & patterns"]]
+];
+const $=s=>document.querySelector(s);
+const KEY='gate-planner-v2';
+let state={},filter='all';const open=new Set();
+try{state=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){}
+const lab={c:'CS',d:'DA',b:'CS + DA'};
+const inP=(p,c)=>p==='cs'?c!=='d':c!=='c';
+const vis=c=>filter==='all'||(filter==='cs'&&c!=='d')||(filter==='da'&&c!=='c')||(filter==='both'&&c==='b');
+function stats(p){let n=0,s=0,r=0;D.forEach((x,i)=>x[1].forEach((t,j)=>{if(inP(p,t[0])){n++;const v=state[i+'.'+j]||0;if(v&1)s++;if(v&2)r++}}));return{n,s,r}}
+function render(){
+ ['cs','da'].forEach(p=>{const t=stats(p),a=t.s/t.n*100,b=t.r/t.n*100;
+  $('#'+p).innerHTML=`<div class="sh"><b>${p.toUpperCase()}</b><span>${Math.round(a)}% studied</span></div><div class="bar"><i style="width:${a}%"></i></div><div class="bar thin"><i style="width:${b}%"></i></div><p>${t.s} of ${t.n} studied, ${t.r} revised</p>`});
+ $('#list').innerHTML=D.map((x,i)=>{
+  const items=x[1].map((t,j)=>[t,j]).filter(a=>vis(a[0][0]));
+  if(!items.length)return'';
+  const hasCS=x[1].some(t=>t[0]!=='d'),hasDA=x[1].some(t=>t[0]!=='c');
+  const cls=hasCS&&hasDA?'b':hasCS?'c':'d',tg=hasCS&&hasDA?'CS + DA':hasCS?'CS':'DA';
+  const done=items.filter(a=>(state[i+'.'+a[1]]||0)&1).length;
+  return`<details class="${cls}" data-s="${i}"${open.has(i)?' open':''}><summary><span class="nm">${x[0]}</span><span class="tag">${tg}</span><span class="ct">${done}/${items.length}</span></summary><ul>`+
+  items.map(a=>{const t=a[0],k=i+'.'+a[1],v=state[k]||0;return`<li class="${t[0]}"><span>${t.slice(2)}<small>${lab[t[0]]}</small></span><button class="chk" data-k="${k}" data-b="1" aria-pressed="${!!(v&1)}">Studied</button><button class="chk" data-k="${k}" data-b="2" aria-pressed="${!!(v&2)}">Revised</button></li>`}).join('')+`</ul></details>`}).join('');
+}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(state))}catch(e){}}
+$('#list').addEventListener('click',e=>{
+ const b=e.target.closest('.chk');if(!b)return;
+ const k=b.dataset.k,bit=+b.dataset.b;let v=state[k]||0;
+ if(bit===1)v=(v&1)?0:1;else v=(v&2)?(v&1):3;
+ if(v)state[k]=v;else delete state[k];
+ save();render();
+});
+$('#list').addEventListener('toggle',e=>{const d=e.target;if(d.dataset&&d.dataset.s!==undefined){const i=+d.dataset.s;d.open?open.add(i):open.delete(i)}},true);
+$('#tabs').addEventListener('click',e=>{
+ const b=e.target.closest('button');if(!b)return;
+ filter=b.dataset.f;document.querySelectorAll('#tabs button').forEach(x=>x.setAttribute('aria-pressed',x===b));render();
+});
+render();
+</script>
+</body>
+</html>
